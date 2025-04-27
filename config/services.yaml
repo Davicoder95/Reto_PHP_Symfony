@@ -20,5 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+     # Register DoctrineAuditoriaSubscriber as a service
+    App\EventSubscriber\DoctrineAuditoriaSubscriber:
+        arguments:
+            $security: '@Symfony\Component\Security\Core\Security'  # Inyección de Symfony\Component\Security\Core\Security
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
